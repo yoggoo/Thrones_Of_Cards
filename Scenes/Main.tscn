@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://bl165du54rfla"]
+
+[ext_resource type="Script" uid="uid://euf4xhdh2djt" path="res://Scrpts/CardManager.gd" id="1_kln2b"]
+[ext_resource type="PackedScene" uid="uid://dy8qgbgc8dbhj" path="res://Scenes/Mazo.tscn" id="2_rgh2o"]
+[ext_resource type="Script" uid="uid://b0wtirtpakjnn" path="res://Scrpts/PlayerHand.gd" id="3_pbw6q"]
+[ext_resource type="Script" uid="uid://bvqdxcn1bj3ou" path="res://Scenes/Deck.gd" id="4_v1gob"]
+[ext_resource type="Texture2D" uid="uid://b33isn36774n3" path="res://assets/Deck.png" id="5_jw32o"]
+[ext_resource type="Script" uid="uid://yoqpgqcadg1s" path="res://Scenes/InputManager.gd" id="6_50glp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1gob"]
+size = Vector2(180, 264)
+
+[node name="Main" type="Node2D"]
+position = Vector2(-4, 0)
+
+[node name="CardManager" type="Node2D" parent="."]
+position = Vector2(1, 1)
+script = ExtResource("1_kln2b")
+
+[node name="Mazo" parent="." instance=ExtResource("2_rgh2o")]
+position = Vector2(180, 436)
+
+[node name="Mazo2" parent="." instance=ExtResource("2_rgh2o")]
+position = Vector2(547.4458, 152.27856)
+
+[node name="PlayerHand" type="Node2D" parent="."]
+script = ExtResource("3_pbw6q")
+
+[node name="Deck" type="Node2D" parent="."]
+position = Vector2(150, 890)
+script = ExtResource("4_v1gob")
+
+[node name="Sprite2D" type="Sprite2D" parent="Deck"]
+texture = ExtResource("5_jw32o")
+
+[node name="Area2D" type="Area2D" parent="Deck"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/Area2D"]
+shape = SubResource("RectangleShape2D_v1gob")
+
+[node name="InputManger" type="Node2D" parent="."]
+script = ExtResource("6_50glp")
